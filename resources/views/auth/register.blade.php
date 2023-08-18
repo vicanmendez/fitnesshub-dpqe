@@ -4,6 +4,7 @@
 
 @section('content')
 
+<div class="container md-3 center">
     <form class="form-signin" method="POST" action="{{ route('register') }}">
         @csrf
         <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
@@ -21,7 +22,7 @@
         <input type="password" id="inputPassword" class="form-control" name="password_confirmation" placeholder="La misma ingresada anteriormente" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Registrarme</button>
     </form>
-
+</div>
     Si ya tienes cuenta, <a href="{{ route('login') }}">inicia sesión</a>
 
 @endsection

@@ -26,6 +26,10 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     // Your routes that require authentication
     Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
+    Route::get('/usuarios', 'App\Http\Controllers\UsersController@index')->name('users');
+    Route::post('/usuarios/nuevo', 'App\Http\Controllers\UsersController@new')->name('users.new');
+    Route::get('/gimnasios', 'App\Http\Controllers\GymController@index')->name('gyms');
+    Route::post('/gimnasios/nuevo', 'App\Http\Controllers\GymController@new')->name('gyms.new');
     // ...
 });
 
