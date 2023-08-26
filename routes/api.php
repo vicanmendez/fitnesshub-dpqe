@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\DropdownController as DropDownController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
+Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;	
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DropdownController as DropdownController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/usuarios/nuevo', 'App\Http\Controllers\UsersController@new')->name('users.new');
     Route::get('/gimnasios', 'App\Http\Controllers\GymController@index')->name('gyms');
     Route::post('/gimnasios/nuevo', 'App\Http\Controllers\GymController@new')->name('gyms.new');
+
+    Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
+    Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');
+
+
+
+
     // ...
 });
 

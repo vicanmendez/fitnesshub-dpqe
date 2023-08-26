@@ -14,6 +14,9 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+
+
+    
   </head>
 
   <body>
@@ -55,7 +58,7 @@
               
               <li class="nav-item">
                 <a class="nav-link active" href="{{ route('users') }}">
-                  <span data-feather="users"> (current) </span>
+                  <span data-feather="users">  </span>
                   Usuarios
                 </a>
               </li>
@@ -126,7 +129,7 @@
     <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
     <script src="{{ asset('js/vendor/popper.min.js') }} "></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
+    <script src="{{ asset('js/vendor/jquery-')}}"
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
@@ -154,8 +157,7 @@
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero: false
-              }
+                eginAtZero: false              }
             }]
           },
           legend: {
