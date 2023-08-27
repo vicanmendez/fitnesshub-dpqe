@@ -31,6 +31,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/usuarios/nuevo', 'App\Http\Controllers\UsersController@new')->name('users.new');
     Route::get('/gimnasios', 'App\Http\Controllers\GymController@index')->name('gyms');
     Route::post('/gimnasios/nuevo', 'App\Http\Controllers\GymController@new')->name('gyms.new');
+    Route::get('/clientes', 'App\Http\Controllers\ClientsController@index')->name('clients');
+    Route::get('/clientes/{id}', 'App\Http\Controllers\ClientsController@edit')->name('clients.edit');
+    Route::put('/clientes/{id}', 'App\Http\Controllers\ClientsController@update')->name('clients.update');
+
 
     Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
     Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');

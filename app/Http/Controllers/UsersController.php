@@ -80,7 +80,8 @@ class UsersController extends Controller
                 //save the user in the trainers table
                 $trainer = new Trainer();
                 } elseif ($role === 'client') { //save the user in the fintess_clients table
-            }
+                    $client = new Client();
+                }
         }
         if($request->input('city') !== "null") {
             $city = $request->input('city');
@@ -100,7 +101,13 @@ class UsersController extends Controller
             $trainer->gym_id = $request->input('gym');
             $trainer->save();
         } 
-        
+        if (isset($client)) {
+            $client->user_id = $user->id;
+            $client->gym_id = $request->input('gym');
+            $client->sex = $request->input("gender");
+            $client->payment_status = "Pendiente";
+            $client->save();
+        }
 
         return view('users.index')->with([
             'currentUser' => $currentUser,

@@ -22,7 +22,7 @@
                 <div class="form-group">
                   <label for="exampleFormControlSelect1">Rol</label>
                   @if($currentUser->is_admin === 1) 
-                    <select name="role" class="form-control" id="exampleFormControlSelect1">
+                    <select name="role" class="form-control" id="roleSelect">
                         <option> Seleccione </option>
                         <option value="client"> Cliente </option>
                         <option value="trainer"> Entrenador </option>
@@ -37,6 +37,18 @@
                       </select>
                     </div>
                 @endif
+
+                <div id="genderInput" class="form-group" style="display:none">
+                    <label for="genderSelect">Sexo</label>
+                      <select name="gender" class="form-control" id="genderSelect">
+                          <option> Seleccione </option>
+                          <option value="Masculino"> Masculino </option>
+                          <option value="Femenino"> Femenino </option>
+                          <option value="No declara"> No declara </option>
+                        </select>
+                </div>
+
+
                   
                 <div class="form-group">
                     <label for="gym">Gimnasio</label>
@@ -145,6 +157,16 @@
         var selectCity = document.getElementById('selectCity');
         var provinceContainer = document.getElementById('provinceContainer');
         var cityContainer = document.getElementById('cityContainer');
+        var roleSelect = document.getElementById('roleSelect');
+
+        roleSelect.addEventListener('change', function() {
+            var role = this.value;
+            if (role === 'client') {
+                genderInput.style.display = 'block';
+            } else {
+                genderInput.style.display = 'none';
+            }
+        });
 
         selectCountry.addEventListener('change', function() {
             var countryId = this.value;

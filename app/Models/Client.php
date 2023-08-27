@@ -9,6 +9,9 @@ class Client extends Model
 {
     use HasFactory;
 
+    protected $table = 'fitness_clients';
+
+
     protected $fillable = [
         'user_id',
         'sex',
@@ -30,7 +33,7 @@ class Client extends Model
     // User relationship
     public function user()
     {
-        return $this->belongsTo(FitnessUser::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     // Gym relationship
@@ -53,10 +56,6 @@ class Client extends Model
         $this->attributes['height'] = $value * 100; // Convert to centimeters
     }
 
-    public function getUserIdAttribute()
-    {
-        return $this->user->id;
-    }
 
     // Add other getters and setters as needed
 
