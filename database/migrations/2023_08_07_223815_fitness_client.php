@@ -24,6 +24,8 @@ return new class extends Migration
         $table->string('checkups_frequency');
         $table->boolean('require_questionnaire');
         $table->string('questionnaire_link');
+        $table->date('last_payment_date')->nullable();
+        $table->date('next_expiring_date')->nullable();
         $table->unsignedBigInteger('gym_id'); // Foreign key to gyms table
         // Other fields...
         $table->timestamps();

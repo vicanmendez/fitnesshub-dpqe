@@ -44,7 +44,9 @@ class ClientsController extends Controller
         $installment_currency = isset($client->installment_currency) ? $client->installment_currency : "";
         $installment_price = isset($client->installment_price) ? $client->installment_price : 0;
         $clientSex = isset($client->sex) ? $client->sex : "";
-        
+        $client->last_payment_date = isset($client->last_payment_date) ? $client->last_payment_date : null;
+        $client->next_expiring_date = isset($client->next_expiring_date) ? $client->next_expiring_date : null;
+
         return view('clients.edit')->with([
             'currentUser' => $currentUser,
             'name' => $name,
@@ -63,6 +65,8 @@ class ClientsController extends Controller
             'installment_currency' => $installment_currency,
             'installment_price' => $installment_price,
             'clientSex' => $clientSex,
+            'last_payment_date' => $client->last_payment_date,
+            'next_expiring_date' => $client->next_expiring_date,
             'gyms' => $gyms,
             ]);
     }
@@ -93,6 +97,8 @@ class ClientsController extends Controller
     $client->installment_currency = $request->input('installment_currency');
     $client->installment_price = $request->input('installment_price');
     $client->sex = $request->input("gender");
+    $client->last_payment_date = $request->input("last_payment_date");
+    $client->next_expiring_date = $request->input("next_expiring_date");
 
     // Save the changes
     if ($user->save() && $client->save()) {

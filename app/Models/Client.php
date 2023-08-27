@@ -25,6 +25,12 @@ class Client extends Model
         'require_questionnaire',
         'questionnaire_link',
         'gym_id',
+        'payment_status',
+        'payment_method',
+        'installment_currency',
+        'installment_price',
+        'next_expiring_date',
+        'last_payment_date',
         // Add other fields here...
     ];
 

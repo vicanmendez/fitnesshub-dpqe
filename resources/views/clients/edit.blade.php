@@ -132,6 +132,15 @@
                         <input type="number" name="installment_price" value="{{ $installment_price }}" class="form-control" id="installement_price">
                     </div>
                     
+                    <div class="form-group">
+                        <label for="last_payment_date">Último Pago</label>
+                        <input type="date" name="last_payment_date" value="{{ $client->last_payment_date }}" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="next_expiring_date">Próxima Expiración</label>
+                        <input type="date" name="next_expiring_date" value="{{ $client->next_expiring_date }}" class="form-control">
+                    </div>
                     
 
                     <a class="btn btn-primary" href={{ route('clients') }}> Volver al listado </a>
