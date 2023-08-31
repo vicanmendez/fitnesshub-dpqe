@@ -29,6 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
     Route::get('/usuarios', 'App\Http\Controllers\UsersController@index')->name('users');
     Route::post('/usuarios/nuevo', 'App\Http\Controllers\UsersController@new')->name('users.new');
+    Route::get('/usuarios/{id}', 'App\Http\Controllers\UsersController@edit')->name('users.edit');
+    Route::put('/usuarios/{id}/password', 'App\Http\Controllers\UsersController@resetPassword')->name('users.resetPassword');
+    Route::get('/usuarios/{id}/eliminar', 'App\Http\Controllers\UsersController@delete')->name('users.delete');
+
     Route::get('/gimnasios', 'App\Http\Controllers\GymController@index')->name('gyms');
     Route::post('/gimnasios/nuevo', 'App\Http\Controllers\GymController@new')->name('gyms.new');
     Route::get('/clientes', 'App\Http\Controllers\ClientsController@index')->name('clients');

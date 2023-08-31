@@ -15,7 +15,6 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
-
     
   </head>
 
@@ -89,7 +88,7 @@
     <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
     <script src="{{ asset('js/vendor/popper.min.js') }} "></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery-')}}"
+    <script src="{{ asset('js/vendor/jquery-')}}"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>

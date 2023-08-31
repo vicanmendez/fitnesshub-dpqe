@@ -3,7 +3,18 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        @if (session()->has('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session()->has('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <div class="col-xl-10">
            <h2> Nuevo usuario </h2>
            @if (isset($success)) 
                 <div class="alert alert-success" role="alert">
@@ -30,7 +41,7 @@
                       </select>
                     </div>
                   @else 
-                    <select name="role" class="form-control" id="exampleFormControlSelect1">
+                    <select name="role" class="form-control" id="roleSelect">
                         <option> Seleccione </option>
                         <option value="client"> Cliente </option>
                         <option value="trainer"> Entrenador </option>
@@ -108,8 +119,13 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-           <h2> Usuarios </h2>
+        <div class="col-xl-10">
+        @if ($currentUser->is_admin === 1)
+            <h2> Usuarios </h2>
+        @else
+            <h2> Usuarios de tu gimansio </h2>
+        @endif
+
         <table class="table">
             <thead>
                 <tr>
@@ -118,6 +134,7 @@
                     <th scope="col">E-Mail</th>
                     <th scope="col">Ciudad</th>
                     <th scope="col">Rol</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
             @if (isset($users))
@@ -136,6 +153,16 @@
                         @elseif ($user->role == 'admin')
                             Administrador
                         @endif
+                        </td>
+                        <td> 
+                            <a href="{{ route('users.edit', $user->id) }}" style="color: blue"> Editar </a>
+                            <a href="{{ route('users.delete', $user->id) }}" style="color: red"> Eliminar </a>
+                            <form action="{{ route('users.resetPassword', $user->id) }}" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit">Reset Password</button>
+                            </form>
+                            
                         </td>
                     </tr>
                 @empty

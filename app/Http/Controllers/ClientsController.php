@@ -18,10 +18,17 @@ class ClientsController extends Controller
     public function index()
     {
         $currentUser = Auth::user();
+        $clients = [];
+        if($currentUser->is_admin === 1) {
+            $clients = Client::all();
+        } else {
+            $trainer = Trainer::where('user_id', $currentUser->id)->first();
+            $clients = Client::where('gym_id', $trainer->gym_id)->get();
+        }
 
         return view('clients.index')->with([
             'currentUser' => $currentUser,
-            'clients' => Client::all(),
+            'clients' => $clients,
             ]);
     }
 
