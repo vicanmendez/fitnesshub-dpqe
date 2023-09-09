@@ -15,7 +15,6 @@
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
 
-
     
   </head>
 
@@ -64,21 +63,19 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link active" href="{{ route('clients') }}">
+                <a class="nav-link " href="{{ route('clients') }}">
                   <span data-feather="users">  </span>
                   Clientes
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('exercises') }}">
+                <a class="nav-link active" href="{{ route('exercises') }}">
                   <span data-feather="zap">  </span>
                   Ejercicios
                 </a>
               </li>
 
-
-              
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('programs') }}">
                   <span data-feather="list">  </span>
@@ -86,6 +83,7 @@
                 </a>
               </li>
 
+              
          
             </ul>
           </div>
@@ -105,13 +103,42 @@
     <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
     <script src="{{ asset('js/vendor/popper.min.js') }} "></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery-')}}"
+    <script src="{{ asset('js/vendor/jquery-')}}"></script>
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
       feather.replace()
     </script>
 
-    
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          datasets: [{
+            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                eginAtZero: false              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
   </body>
 </html>

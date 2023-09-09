@@ -35,10 +35,21 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/gimnasios', 'App\Http\Controllers\GymController@index')->name('gyms');
     Route::post('/gimnasios/nuevo', 'App\Http\Controllers\GymController@new')->name('gyms.new');
+    
     Route::get('/clientes', 'App\Http\Controllers\ClientsController@index')->name('clients');
     Route::get('/clientes/{id}', 'App\Http\Controllers\ClientsController@edit')->name('clients.edit');
     Route::put('/clientes/{id}', 'App\Http\Controllers\ClientsController@update')->name('clients.update');
 
+    Route::get('/ejercicios', 'App\Http\Controllers\ExerciseController@index')->name('exercises');
+    Route::post('/ejercicios/nuevo', 'App\Http\Controllers\ExerciseController@new')->name('exercises.new');
+    Route::get('/ejercicios/{id}', 'App\Http\Controllers\ExerciseController@edit')->name('exercises.edit');
+    Route::put('/ejercicios/{id}', 'App\Http\Controllers\ExerciseController@update')->name('exercises.update');
+
+    Route::get('/programas', 'App\Http\Controllers\ProgramController@index')->name('programs');
+    Route::post('/programas/nuevo', 'App\Http\Controllers\ProgramController@new')->name('programs.new');
+    Route::get('/programas/{id}', 'App\Http\Controllers\ProgramController@edit')->name('programs.edit');
+    Route::put('/programas/{id}', 'App\Http\Controllers\ProgramController@update')->name('programs.update');
+    Route::get('/programas/{id}/eliminar', 'App\Http\Controllers\ProgramController@delete')->name('programs.delete');    
 
     Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
     Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');

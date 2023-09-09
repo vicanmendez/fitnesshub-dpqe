@@ -68,6 +68,21 @@
                 </a>
               </li>
 
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('exercises') }}">
+                  <span data-feather="zap">  </span>
+                  Ejercicios
+                </a>
+              </li>
+
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('programs') }}">
+                  <span data-feather="list">  </span>
+                  Programas de entrenamiento
+                </a>
+              </li>
+
               
 
             </ul>
