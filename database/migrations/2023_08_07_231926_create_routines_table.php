@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('routines', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('title', 100)->nullable(false);
+            $table->string('type', 200)->nullable(false);
         });
     }
 

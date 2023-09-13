@@ -80,7 +80,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('programs') }}">
                   <span data-feather="list">  </span>
-                  Programas de entrenamiento
+                  Programas y rutinas
+
                 </a>
               </li>
          

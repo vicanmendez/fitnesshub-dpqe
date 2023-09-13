@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Program;
+use App\Models\RoutineExercise;
+use App\Models\Routine;
 
 class ProgramController extends Controller
 {
@@ -12,8 +14,9 @@ class ProgramController extends Controller
     public function index()
     {
         $programs = Program::all();
+        $routines = Routine::all();
         $currentUser = auth()->user();
-        return view('programs.index', ['programs' => $programs, 'currentUser' => $currentUser]);
+        return view('programs.index', ['programs' => $programs, 'currentUser' => $currentUser, 'routines' => $routines]);
     }
 
     public function new(Request $request)

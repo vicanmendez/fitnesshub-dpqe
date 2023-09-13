@@ -51,6 +51,11 @@ Route::middleware('auth')->group(function () {
     Route::put('/programas/{id}', 'App\Http\Controllers\ProgramController@update')->name('programs.update');
     Route::get('/programas/{id}/eliminar', 'App\Http\Controllers\ProgramController@delete')->name('programs.delete');    
 
+    Route::post('/rutinas/nuevo', 'App\Http\Controllers\RoutineController@new')->name('routines.new');
+    Route::get('/rutinas/{id}', 'App\Http\Controllers\RoutineController@edit')->name('routines.edit');
+    Route::put('/rutinas/{id}', 'App\Http\Controllers\RoutineController@update')->name('routines.update');
+    Route::get('/rutinas/{id}/eliminar', 'App\Http\Controllers\RoutineController@delete')->name('routines.delete');
+
     Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
     Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');
 
