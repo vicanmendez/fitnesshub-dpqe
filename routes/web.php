@@ -44,6 +44,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/ejercicios/nuevo', 'App\Http\Controllers\ExerciseController@new')->name('exercises.new');
     Route::get('/ejercicios/{id}', 'App\Http\Controllers\ExerciseController@edit')->name('exercises.edit');
     Route::put('/ejercicios/{id}', 'App\Http\Controllers\ExerciseController@update')->name('exercises.update');
+    Route::get('/ejercicios/{id}/eliminar', 'App\Http\Controllers\ExerciseController@delete')->name('exercises.delete');
 
     Route::get('/programas', 'App\Http\Controllers\ProgramController@index')->name('programs');
     Route::post('/programas/nuevo', 'App\Http\Controllers\ProgramController@new')->name('programs.new');
@@ -55,6 +56,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/rutinas/{id}', 'App\Http\Controllers\RoutineController@edit')->name('routines.edit');
     Route::put('/rutinas/{id}', 'App\Http\Controllers\RoutineController@update')->name('routines.update');
     Route::get('/rutinas/{id}/eliminar', 'App\Http\Controllers\RoutineController@delete')->name('routines.delete');
+    Route::get('/rutinas/{id}/ejercicios', 'App\Http\Controllers\RoutineController@exercises')->name('routines.exercises');
+    Route::get('/rutinas/{id}/ejercicios/{id_ejer}', 'App\Http\Controllers\RoutineController@loadExercise')->name('routines.exercises.load');
+    Route::post('/rutinas/{id}/ejercicios/nuevo/{id_ejer}', 'App\Http\Controllers\RoutineController@newExercise')->name('routines.exercises.new');
+    Route::get('/rutinas/{id}/ejercicios/{id_ejer}/eliminar', 'App\Http\Controllers\RoutineController@deleteExercise')->name('routines.exercises.delete');
 
     Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
     Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');

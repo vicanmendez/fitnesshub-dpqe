@@ -23,9 +23,9 @@ class ExerciseController extends Controller
         $exercise->description = $request->description;
         $exercise->video_url = $request->video_url;
         if ($exercise->save()) {
-            return redirect()->route('exercises').with('success', 'Ejercicio creado correctamente');
+            return redirect()->route('exercises')->with('success', 'Ejercicio creado correctamente');
         } else {
-            return redirect()->route('exercises.new').with('error', 'Error al crear el ejercicio, asegurar que no falten datos requeridos');
+            return redirect()->route('exercises.new')->with('error', 'Error al crear el ejercicio, asegurar que no falten datos requeridos');
         }
 
         return redirect()->route('exercises');
@@ -50,6 +50,12 @@ class ExerciseController extends Controller
         }
 
         return redirect()->route('exercises');
+    }
+    
+    public function delete($id) {
+        $exercise = Exercise::find($id);
+        $exercise->delete();
+        return redirect()->route('exercises')->with('success', 'Ejercicio eliminado correctamente');
     }
 
 }

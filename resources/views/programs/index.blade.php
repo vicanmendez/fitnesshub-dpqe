@@ -1,6 +1,15 @@
 @extends('layouts.programs')
 
 @section('content')
+<script>
+
+window.onload = function() {
+        document.getElementById("newProgram").style.display = "none";
+        document.getElementByUd("newRoutine").style.display = "none";
+    }
+
+</script>
+
 
 <div class="container">
 
@@ -58,8 +67,9 @@
                     <td> {{ $routine->title }} </td>
                     <td> {{ $routine->type }} </td>
                     <td>
-                        <a href="{{ route('routines.edit', $routine->id) }}" > Editar </a>
-                        <a href="{{ route('routines.delete', $routine->id) }}" > Eliminar </a>
+                        <a href="{{ route('routines.edit', $routine->id) }}" > Editar </a> -
+                        <a href="{{ route('routines.delete', $routine->id) }}" > Eliminar </a> -
+                        <a href="{{ route('routines.exercises', $routine->id) }}" > Agregar ejercicios </a>
                     </td>
                 </tr>
 
@@ -117,7 +127,7 @@
                             <td> {{ $program->title }} </td>
                             <td> {{ $program->type }} </td>
                             <td>
-                                <a href="{{ route('programs.edit', $program->id) }}" > Editar </a>
+                                <a href="{{ route('programs.edit', $program->id) }}" > Editar </a> -
                                 <a href="{{ route('programs.delete', $program->id) }}" > Eliminar </a>
                             </td>
                         </tr>
@@ -134,10 +144,7 @@
 </div>
 
 <script>
-    window.onload = function() {
-        document.getElementById("newProgram").style.display = "none";
-        document.getElementByUd("newRoutine").style.display = "none";
-    }
+  
 
     function newProgram() {
         document.getElementById("newProgram").style.display = "block";

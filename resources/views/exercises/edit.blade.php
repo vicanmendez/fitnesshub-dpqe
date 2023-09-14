@@ -38,6 +38,8 @@
             <label for="video_url"> URL del video </label>
             <input type="text" value="{{ $exercise->url_video }}"class="form-control" id="video_url" name="video_url" placeholder="URL del video">
         </div>
+        <a class="btn btn-secondary" href="{{ route('exercises') }}"> Volver </a>
+
         <button type="submit" class="btn btn-primary"> Actualizar </button>
     </form>
 

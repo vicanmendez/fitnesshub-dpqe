@@ -64,6 +64,7 @@
                             <td> {{ $exercise->video_url }} </td>
                             <td>
                                 <a href="{{ route('exercises.edit', $exercise->id) }}" > Editar </a>
+                                <a href="{{ route('exercises.delete', $exercise->id) }}" > Eliminar </a>
                             </td>
                         </tr>
 

@@ -143,7 +143,7 @@
                     </div>
                     
 
-                    <a class="btn btn-primary" href={{ route('clients') }}> Volver al listado </a>
+                    <a class="btn btn-secondary" href={{ route('clients') }}> Volver al listado </a>
             
                     <input type="submit" class="btn btn-danger" value="Actualizar datos">
                 
