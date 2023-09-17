@@ -84,6 +84,15 @@
                 </a>
               </li>
               
+
+              <li class="nav-item">
+                <a class="nav-link" href="{{ route('assignments') }}">
+                  <span data-feather="list">  </span>
+                 Planificacones
+                </a>
+              </li>
+
+              
             </ul>
           </div>
         </nav>

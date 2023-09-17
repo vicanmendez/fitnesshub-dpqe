@@ -152,6 +152,8 @@ class UsersController extends Controller
         $role = $request->input('role');
         if($role === 'admin' && $currentUser->is_admin === 1){
             $is_admin = 1;
+            //By default, an admin user is also a trainer user, but not all trainers are admins
+            $trainer = new Trainer();
         } else {
             $is_admin = 0;
             if($role === 'trainer') {

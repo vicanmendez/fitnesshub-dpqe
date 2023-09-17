@@ -139,6 +139,10 @@ window.onload = function() {
                 </table>    
             @endif
 
+            <div class="mt-3"> </div>
+            <div  class="col-md-6">
+                <a class="btn btn-warning" href="{{ route('assignments') }}"> Ir a Asignación de programas (planificaciones) </a>
+            </div>
 
         </div>
     </div>

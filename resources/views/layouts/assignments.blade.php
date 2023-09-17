@@ -14,8 +14,6 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
-    
   </head>
 
   <body>
@@ -38,32 +36,33 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item">
 
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only"> </span>
                 </a>
               </li>
-             
+
+              
               @if($currentUser->is_admin === 1)
-              <li class="nav-item">
-                <a class="nav-link" href=" {{ route('gyms') }}">
-                  <span data-feather="align-center"></span>
-                  Gimnasios <span class="aperture"> </span>
-                </a>
-              </li>
-             @endif
+                <li class="nav-item">
+                  <a class="nav-link" href=" {{ route('gyms') }}">
+                    <span data-feather="align-center"></span>
+                    Gimnasios <span class="aperture" (current) > </span>
+                  </a>
+                </li>
+              @endif
               
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('users') }}">
-                  <span data-feather="users">  </span>
+                  <span data-feather="users"></span>
                   Usuarios
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link " href="{{ route('clients') }}">
+                <a class="nav-link" href="{{ route('clients') }}">
                   <span data-feather="users">  </span>
                   Clientes
                 </a>
@@ -76,8 +75,9 @@
                 </a>
               </li>
 
+              
               <li class="nav-item">
-                <a class="nav-link active" href="{{ route('programs') }}">
+                <a class="nav-link" href="{{ route('programs') }}">
                   <span data-feather="list">  </span>
                   Programas y rutinas
 
@@ -85,12 +85,12 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('assignments') }}">
+                <a class="nav-link active" href="{{ route('assignments') }}">
                   <span data-feather="list">  </span>
                  Planificacones
                 </a>
               </li>
-         
+              
             </ul>
           </div>
         </nav>
@@ -109,7 +109,7 @@
     <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
     <script src="{{ asset('js/vendor/popper.min.js') }} "></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery-')}}"></script>
+
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
@@ -137,7 +137,8 @@
           scales: {
             yAxes: [{
               ticks: {
-                eginAtZero: false              }
+                beginAtZero: false
+              }
             }]
           },
           legend: {

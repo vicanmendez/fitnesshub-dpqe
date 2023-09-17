@@ -52,7 +52,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/programas/{id}', 'App\Http\Controllers\ProgramController@update')->name('programs.update');
     Route::get('/programas/{id}/eliminar', 'App\Http\Controllers\ProgramController@delete')->name('programs.delete');    
     Route::get('/programas/{id}/rutinas', 'App\Http\Controllers\ProgramController@routines')->name('programs.routines');
-    //Route::get('/programas/{id}/rutinas/{id_rut}', 'App\Http\Controllers\ProgramController@loadRoutine')->name('programs.routines.load');
     Route::post('/programas/{id}/rutinas/nuevo', 'App\Http\Controllers\ProgramController@newRoutine')->name('programs.routines.new');
     Route::get('/programas/{id}/rutinas/{id_rut}/eliminar', 'App\Http\Controllers\ProgramController@deleteRoutine')->name('programs.routines.delete');
 
@@ -64,6 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/rutinas/{id}/ejercicios/{id_ejer}', 'App\Http\Controllers\RoutineController@loadExercise')->name('routines.exercises.load');
     Route::post('/rutinas/{id}/ejercicios/nuevo/{id_ejer}', 'App\Http\Controllers\RoutineController@newExercise')->name('routines.exercises.new');
     Route::get('/rutinas/{id}/ejercicios/{id_ejer}/eliminar', 'App\Http\Controllers\RoutineController@deleteExercise')->name('routines.exercises.delete');
+
+    Route::get('/planificaciones', 'App\Http\Controllers\AssignmentController@index')->name('assignments');
+    Route::post('/planificaciones/nuevo', 'App\Http\Controllers\AssignmentController@new')->name('assignments.new');
+    Route::get('/planificaciones/{id}/eliminar', 'App\Http\Controllers\AssignmentController@delete')->name('assignments.delete');
 
     Route::get('/get-provinces/{countryId}', [DropdownController::class, 'getProvinces'])->name('getProvinces');
     Route::get('/get-cities/{provinceId}', [DropdownController::class, 'getCities'])->name('getCities');

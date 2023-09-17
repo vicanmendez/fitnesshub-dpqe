@@ -67,17 +67,7 @@ class ProgramController extends Controller
         $routines = Routine::all();
         return view('programs.program_routines', ['program' => $program, 'routinePrograms' => $routinePrograms, 'currentUser' => $currentUser, 'routines' => $routines]);
     }
-
-    /*
-    public function loadRoutine($id, $id_rut) {
-        $program = Program::find($id);
-        $routinePrograms = RoutineProgram::where('program_id', $id)->get();
-        $currentUser = auth()->user();
-        $routines = Routine::all();
-        $currentRoutine = Routine::find($id_rut);
-        return view('programs.program_routines', ['program' => $program, 'routinePrograms' => $routinePrograms, 'currentUser' => $currentUser, 'routines' => $routines, 'currentRoutine' => $currentRoutine]);
-    }
-    */
+    
 
     //PRE CONDITION: The routine must be previously
     public function newRoutine(Request $request, $id) {

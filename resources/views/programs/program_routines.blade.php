@@ -30,7 +30,7 @@
                 <form method="POST" action="{{ route('programs.routines.new', ['id'=>$program->id]) }}">
                     @csrf
                     <div class="form-group">
-                        <select class="form-control col-md-9" id="selectRoutine" name="routine" onchange="loadRoutine()">
+                        <select class="form-control col-md-9" id="selectRoutine" name="routine">
                             @foreach ($routines as $routine)
                                 <option value="{{ $routine->id }}"> {{ $routine->title }} </option>
                             @endforeach
