@@ -128,7 +128,8 @@ window.onload = function() {
                             <td> {{ $program->type }} </td>
                             <td>
                                 <a href="{{ route('programs.edit', $program->id) }}" > Editar </a> -
-                                <a href="{{ route('programs.delete', $program->id) }}" > Eliminar </a>
+                                <a href="{{ route('programs.delete', $program->id) }}" > Eliminar </a> - 
+                                <a href="{{ route('programs.routines', $program->id) }}" > RUTINAS </a>
                             </td>
                         </tr>
 

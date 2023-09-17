@@ -14,9 +14,6 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-
-
-    
   </head>
 
   <body>
@@ -39,26 +36,27 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item">
 
+              <li class="nav-item">
                 <a class="nav-link" href="{{ route('home') }}">
                   <span data-feather="home"></span>
                   Dashboard <span class="sr-only"> </span>
                 </a>
               </li>
-             
+
+              
               @if($currentUser->is_admin === 1)
-              <li class="nav-item">
-                <a class="nav-link" href=" {{ route('gyms') }}">
-                  <span data-feather="align-center"></span>
-                  Gimnasios <span class="aperture"> </span>
-                </a>
-              </li>
-             @endif
+                <li class="nav-item">
+                  <a class="nav-link" href=" {{ route('gyms') }}">
+                    <span data-feather="align-center"></span>
+                    Gimnasios <span class="aperture" (current) > </span>
+                  </a>
+                </li>
+              @endif
               
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('users') }}">
-                  <span data-feather="users">  </span>
+                  <span data-feather="users"></span>
                   Usuarios
                 </a>
               </li>
@@ -77,7 +75,6 @@
                 </a>
               </li>
 
-
               
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('programs') }}">
@@ -86,8 +83,7 @@
 
                 </a>
               </li>
-
-         
+              
             </ul>
           </div>
         </nav>
@@ -106,13 +102,43 @@
     <script>window.jQuery || document.write('<script src="{{ asset('js/vendor/jquery-slim.min.js') }}"><\/script>')</script>
     <script src="{{ asset('js/vendor/popper.min.js') }} "></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/vendor/jquery-')}}"
+
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
     <script>
       feather.replace()
     </script>
 
-    
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart");
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          datasets: [{
+            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            lineTension: 0,
+            backgroundColor: 'transparent',
+            borderColor: '#007bff',
+            borderWidth: 4,
+            pointBackgroundColor: '#007bff'
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: false
+              }
+            }]
+          },
+          legend: {
+            display: false,
+          }
+        }
+      });
+    </script>
   </body>
 </html>

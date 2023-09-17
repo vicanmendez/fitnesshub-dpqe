@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Program;
 use App\Models\RoutineExercise;
 use App\Models\Routine;
+use App\Models\RoutineProgram;
 
 class ProgramController extends Controller
 {
@@ -58,4 +59,44 @@ class ProgramController extends Controller
         $program->delete();
         return redirect()->route('programs')->with('success', 'Programa eliminado correctamente');
     }
+
+    public function routines($id) {
+        $program = Program::find($id);
+        $routinePrograms = RoutineProgram::where('program_id', $id)->get();
+        $currentUser = auth()->user();
+        $routines = Routine::all();
+        return view('programs.program_routines', ['program' => $program, 'routinePrograms' => $routinePrograms, 'currentUser' => $currentUser, 'routines' => $routines]);
+    }
+
+    /*
+    public function loadRoutine($id, $id_rut) {
+        $program = Program::find($id);
+        $routinePrograms = RoutineProgram::where('program_id', $id)->get();
+        $currentUser = auth()->user();
+        $routines = Routine::all();
+        $currentRoutine = Routine::find($id_rut);
+        return view('programs.program_routines', ['program' => $program, 'routinePrograms' => $routinePrograms, 'currentUser' => $currentUser, 'routines' => $routines, 'currentRoutine' => $currentRoutine]);
+    }
+    */
+
+    //PRE CONDITION: The routine must be previously
+    public function newRoutine(Request $request, $id) {
+        $routineProgram = new RoutineProgram();
+        $routineProgram->program_id = $id;
+        $routineProgram->routine_id = $request->routine;
+        if ($routineProgram->save()) {
+            return redirect()->route('programs.routines', ['id' => $id])->with('success', 'Rutina agregada correctamente');
+        } else {
+            return redirect()->route('programs.routines', ['id' => $id])->with('error', 'Error al agregar la rutina, asegurar que no falten datos requeridos');
+        }
+
+        return redirect()->route('programs.routines', ['id' => $id]);
+    }
+
+    public function deleteRoutine($id, $id_rut) {
+        $routineProgram = RoutineProgram::where('program_id', $id)->where('routine_id', $id_rut)->first();
+        $routineProgram->delete();
+        return redirect()->route('programs.routines', ['id' => $id])->with('success', 'Rutina eliminada correctamente');
+    }
+
 }

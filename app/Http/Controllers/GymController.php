@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Gym;
+use App\Models\City;
+use App\Models\Province;    
+use App\Models\Country;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class GymController extends Controller
 {
+
     public function index()
     {
         $currentUser = Auth::user();
+
         $gyms = Gym::all();
+        $countries = Country::all();
         return view('gyms.index')->with([
             'currentUser' => $currentUser,
-            'gyms' => $gyms
+            'gyms' => $gyms,
+            'countries' => $countries
         ]);
     }
 
