@@ -16,7 +16,7 @@ return new class extends Migration
             $table->boolean('is_admin')->default(false);
             $table->timestamp('last_login')->nullable();
             $table->unsignedBigInteger('city_id')->nullable(); // Foreign key column for city
-            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade')->nullable();
 
         });
     }
@@ -27,10 +27,14 @@ return new class extends Migration
      */
     public function down(): void
     {
-        $table->dropColumn('active');
-        $table->dropColumn('is_admin');
-        $table->dropColumn('last_login');
-        $table->dropColumn('city_id');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign('city_id');
+            $table->dropColumn('active');
+            $table->dropColumn('is_admin');
+            $table->dropColumn('last_login');
+            $table->dropColumn('city_id');
+        });
+        
 
     }
 };

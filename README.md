@@ -1,3 +1,119 @@
+# Fitness Hub Aplicación Web
+
+## Guía de Instalación
+
+### Requisitos Previos
+Antes de comenzar, asegúrate de tener instalado lo siguiente en tu sistema:
+- [XAMPP](https://www.apachefriends.org/index.html)
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/)
+
+
+### Pasos de Configuración
+    **Primero que todo, muévete a la carpeta de tu servidor (por defecto, C:/xampp/htdocs)**
+
+
+1. **Clona el repositorio**
+    git clone https://github.com/vicanmendez/fitnesshub
+
+2. **Muevete al directorio del repositorio (también lo puedes hacer desde la interfaz gráfica y ejecutar un terminal dentro de la carpeta)**
+    cd fitness-hub
+
+3. **Instala las dependencias necesarias**
+    composer update
+    composer install
+
+4. **Genera las claves necesarias**
+    php artisan key:generate
+
+5. **Crea la base de datos**
+    Debes crear la base de datos para la aplicación (Ejemplo, desde el navegador web, puedes ir a to http://localhost/phpmyadmin y crearla con el nombre que quieras).
+
+6. **Actualiza las variables de entorno**
+    Copia el archivo .env.example a .env (o renombrala como .env) y pon la siguiente configuración:
+
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+
+7. **Ejecuta las migraciones y seeders**
+    php artisan migrate --seed
+
+8. **Ejecuta el servidor**
+    php artisan serve
+
+9. **Abre la aplicación**
+    Abre un navegador y ejecuta la aplicación en http://localhost:8000
+
+    Usuario por defecto (admin)
+
+    Username: admin@admin
+    Password: admin
+
+
+# Fitness Hub Web App
+
+## Installation Guide
+
+### Prerequisites
+Before you begin, make sure you have the following installed on your system:
+- [XAMPP](https://www.apachefriends.org/index.html)
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/)
+
+### Setup Steps
+   **First of all, move to your server folder (by default, C:/xampp/htdocs)**
+
+1. **Clone the Repository**
+    git clone https://github.com/vicanmendez/fitnesshub
+
+2. **Move to the project directory**
+    cd fitness-hub
+
+3. **Install dependencies**
+    composer update
+    composer install
+
+4. **Generate Application Key**
+    php artisan key:generate
+
+5. **Create Database**
+    Create a new database for the application. (I.e: within the web browser, go to http://localhost/phpmyadmin and create the DB).
+
+6. **Update environment variables**
+    Copy the .env.example file to .env and update the database configuration:
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=your_database_name
+    DB_USERNAME=your_database_username
+    DB_PASSWORD=your_database_password
+
+7. **Run migrations and seeders**
+    php artisan migrate --seed
+
+8. **Run the server**
+    php artisan serve
+
+9. **Go to the application**
+    Open your web browser and go to http://localhost:8000
+
+    Default User Credentials
+
+    Username: admin@admin
+    Password: admin
+
+
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
