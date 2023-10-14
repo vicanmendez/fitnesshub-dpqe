@@ -82,6 +82,10 @@
                     </div>
 
                     <div class="form-group">
+                        <span class="text-primary" id="agregarUbicacion" onclick="agregarUbicacion()"> +Agregar ubicación </span>
+                    </div>
+
+                    <div class="form-group" id="formPais" style="display:none">
                         <label for="pais" class="form-label"> Ubicación </label>
                         <select name="country" class="form-control" id="selectCountry">
                             <option value="">Seleccione país</option>
@@ -108,8 +112,8 @@
                         </select>
                     </div>
 
-                    
-                    
+                
+                 
 
                     <input type="submit" class="btn btn-primary" value="Guardar">
                         
@@ -185,6 +189,18 @@
 
 <!-- JavaScript code to handle dynamic dropdowns -->
 <script>
+
+    function agregarUbicacion() {
+        var formPais = document.getElementById('formPais');
+        if(formPais.style.display == 'none') {
+            document.getElementById('agregarUbicacion').innerHTML = ' -Quitar ';
+            formPais.style.display = 'block';
+        } else {
+            document.getElementById('agregarUbicacion').innerHTML = ' +Agregar ubicación ';
+            formPais.style.display = 'none';
+        }
+    }   
+
     document.addEventListener('DOMContentLoaded', function() {
         var selectCountry = document.getElementById('selectCountry');
         var selectProvince = document.getElementById('selectProvince');
@@ -192,6 +208,7 @@
         var provinceContainer = document.getElementById('provinceContainer');
         var cityContainer = document.getElementById('cityContainer');
         var roleSelect = document.getElementById('roleSelect');
+        
 
         roleSelect.addEventListener('change', function() {
             var role = this.value;

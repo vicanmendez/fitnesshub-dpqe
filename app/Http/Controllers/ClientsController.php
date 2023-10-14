@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Trainer;
 use App\Models\Gym;
 use App\Models\Client;
+use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 
 class ClientsController extends Controller
@@ -24,6 +25,15 @@ class ClientsController extends Controller
         } else {
             $trainer = Trainer::where('user_id', $currentUser->id)->first();
             $clients = Client::where('gym_id', $trainer->gym_id)->get();
+        }
+        foreach ($clients as $client) {
+            if (isset($client->user->city_id)) {
+                $client->user->city = City::find($client->user->city_id);
+            } else {
+                $client->user->city = new City();
+                $client->user->city->name= "";
+              
+            }
         }
 
         return view('clients.index')->with([

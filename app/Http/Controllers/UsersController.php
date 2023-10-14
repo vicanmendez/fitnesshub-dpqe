@@ -64,6 +64,15 @@ class UsersController extends Controller
     {
         $currentUser = Auth::user();
         $users = $this->loadUsers();
+        foreach ($users as $user) {
+            if (isset($user->city_id)) {
+                $user->city = City::find($user->city_id);
+            } else {
+                $user->city = new City();
+                $user->city->name = "";
+              
+            }
+        }
         $gyms = [];
         if ($currentUser->is_admin === 1) {
             $gyms = Gym::all();
@@ -136,6 +145,15 @@ class UsersController extends Controller
             $gym_id = Trainer::where('user_id', $currentUser->id)->first()->gym_id;
             $gyms = Gym::where('id', $gym_id)->get();
         }
+        foreach ($users as $user) {
+            if (isset($user->city_id)) {
+                $user->city = City::find($user->city_id);
+            } else {
+                $user->city = new City();
+                $user->city->name = "";
+              
+            }
+        }
         $countries = Country::all();
         // Validate input data
         $validator = Validator::make($request->all(), [
@@ -166,14 +184,14 @@ class UsersController extends Controller
         if($request->input('city') !== "null") {
             $city = $request->input('city');
         } else {
-            $city = 1;
+            //$city = 1;
         }
         $user = new User();
         $user->name = $name;
         $user->email = $email;
         $user->password = $password;
         $user->is_admin = $is_admin;
-        $user->city_id = $city;
+        $user->city_id = isset($city) ? $city : null;
         $user->save();
         if(isset($trainer)) {
             $trainer->presentation = "";
