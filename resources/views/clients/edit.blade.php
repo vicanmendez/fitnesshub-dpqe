@@ -87,8 +87,20 @@
                     </div>
                     
                     <div class="form-group">
-                            <label for="checkup_frequency">Frecuencia de chequeos</label>
-                            <input type="text" name="checkup_frequency" value="{{ $checkup_frequency }}" class="form-control" id="checkup_frequency">
+                        <label for="checkup_frequency">Frecuencia de chequeos</label>
+                        <select name="checkup_frequency" class="form-control" id="checkup_frequency">
+                            <option value="1" {{ old('checkup_frequency', $checkup_frequency) == 1 ? 'selected' : '' }}>Diario</option>
+                            <option value="7" {{ old('checkup_frequency', $checkup_frequency) == 7 ? 'selected' : '' }}>Semanal</option>
+                            <option value="15" {{ old('checkup_frequency', $checkup_frequency) == 15 ? 'selected' : '' }}>Quincenal</option>
+                            <option value="30" {{ old('checkup_frequency', $checkup_frequency) == 30 ? 'selected' : '' }}>Mensual</option>
+                            <option value="90" {{ old('checkup_frequency', $checkup_frequency) == 90 ? 'selected' : '' }}>Trimestral</option>
+                            <option value="0" {{ old('checkup_frequency', $checkup_frequency) == 0 ? 'selected' : '' }}>Custom (a convenir con el entrenador)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="next_checkup"> Fecha del próximo chequeo </label>
+                        <input type="date" name="next_checkup" value="{{ $next_checkup }}" class="form-control" id="next_checkup">
                     </div>
                     
                     <div class="form-group">

@@ -27,6 +27,14 @@ class ClientsController extends Controller
             $clients = Client::where('gym_id', $trainer->gym_id)->get();
         }
         foreach ($clients as $client) {
+             // Check if next_checkup_date needs to be updated
+            if ($client->next_checkup <= now()) {
+                // Calculate and update the next_checkup_date
+                if(isset($client->checkups_frequency)) {
+                    $client->next_checkup = now()->addDays($client->checkup_frequency);
+                } 
+                $client->save();
+            }
             if (isset($client->user->city_id)) {
                 $client->user->city = City::find($client->user->city_id);
             } else {
@@ -53,7 +61,8 @@ class ClientsController extends Controller
         $weight = isset($client->weight) ? $client->weight : 0;
         $training_type = isset($client->training_type) ? $client->training_type : "";
         $require_checkups = isset($client->require_checkups) ? $client->require_checkups : 0;
-        $checkup_frequency = isset($client->checkups_frequency) ? $client->checkups_frequency : "";
+        $checkup_frequency = isset($client->checkups_frequency) ? $client->checkups_frequency : 0;
+        $next_checkup = isset($client->next_checkup) ? $client->next_checkup : null;
         $require_questionnaire = isset($client->require_questionnaire) ? $client->require_questionnaire : 0;
         $questionnaire_link = isset($client->questionnaire_link) ? $client->questionnaire_link : "";
         $payment_status = isset($client->payment_status) ? $client->payment_status : 0;
@@ -75,6 +84,7 @@ class ClientsController extends Controller
             'training_type' => $training_type,
             'require_checkups' => $require_checkups,
             'checkup_frequency' => $checkup_frequency,
+            'next_checkup' => $next_checkup,
             'require_questionnaire' => $require_questionnaire,
             'questionnaire_link' => $questionnaire_link,
             'payment_status' => $payment_status,
@@ -105,8 +115,9 @@ class ClientsController extends Controller
     $client->height = $request->input('height');
     $client->weight = $request->input('weight');
     $client->training_type = $request->input('training_type');
-    $client->require_checkups = $request->input('require_checkups');
-    $client->checkups_frequency = $request->input('checkups_frequency');
+    $client->require_checkups = $request->has('require_checkups') ? 1 : 0;
+    $client->checkups_frequency = $request->input('checkup_frequency');
+    $client->next_checkup = $request->input('next_checkup');
     $client->require_questionnaire = $request->input('require_questionnaire');
     $client->questionnaire_link = $request->input('questionnaire_link');
     $client->payment_status = $request->input('payment_status');

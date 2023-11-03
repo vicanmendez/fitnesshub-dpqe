@@ -22,6 +22,7 @@ class Client extends Model
         'training_type',
         'require_checkups',
         'checkups_frequency',
+        'next_checkup',
         'require_questionnaire',
         'questionnaire_link',
         'gym_id',

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->decimal('weight', 6, 2)->nullable()->change();
             $table->string('training_type')->nullable()->change();
             $table->boolean('require_checkups')->nullable()->change();
-            $table->string('checkups_frequency')->nullable()->change();
+            $table->integer('checkups_frequency')->default(7)->nullable()->change();
+            $table->date('next_checkup')->after('checkups_frequency')->nullable();
             $table->boolean('require_questionnaire')->nullable()->change();
             $table->string('questionnaire_link')->nullable()->change();
             // Update other columns as needed
@@ -33,6 +34,7 @@ return new class extends Migration
     public function down(): void
     {
         //
+        
         
     }
 };
