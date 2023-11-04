@@ -54,27 +54,27 @@
                         @csrf
                         <div class="form-group">
                             <label for="sets"> Repeticiones </label>
-                            <input type="number" class="form-control" id="sets" name="sets" placeholder="Ej: 10" required>
+                            <input type="text" class="form-control" id="sets" name="sets" placeholder="Ej: 10">
                         </div>
                         <div class="form-group">
                             <label for="repetitions"> Series </label>
-                            <input type="number" class="form-control" id="repetitions" name="repetitions" placeholder="Ej: 3" required>
+                            <input type="text" class="form-control" id="repetitions" name="repetitions" placeholder="Ej: 3">
                         </div>
                         <div class="form-group">
                             <label for="weight"> Tiempo de actividad (segundos) </label>
-                            <input type="number" class="form-control" id="exercise_seconds" name="exercise_seconds" placeholder="Ej: 20" required>
+                            <input type="number" class="form-control" id="exercise_seconds" name="exercise_seconds" placeholder="Ej: 20">
                         </div>
                         <div class="form-group">
                             <label for="rest_seconds"> Tiempo de descanso (segundos) </label>
-                            <input type="number" class="form-control" id="rest_seconds" name="rest_seconds" placeholder="Ej: 10" required>
+                            <input type="number" class="form-control" id="rest_seconds" name="rest_seconds" placeholder="Ej: 10">
                         </div>
                         <div class="form-group">
                             <label for="progress_metric"> Métrica de progreso (ejemplo: Kg) </label>
-                            <input type="text" class="form-control" id="progress_metric" name="progress_metric" placeholder="Ej: Kg -en ejercicios de peso- o Segundos -en ejercicios por tiempo-" required>
+                            <input type="text" class="form-control" id="progress_metric" name="progress_metric" placeholder="Ej: Kg -en ejercicios de peso- o Segundos -en ejercicios por tiempo-">
                         </div>
                         <div class="form-group">
                             <label for="progress_value"> Valor de exigencia (ejemplo: 10) </label>
-                            <input type="number" class="form-control" id="progress_value" name="progress_value" placeholder="Ej: 10 -si anteriormente se ingresó 'Kg', son 10 Kg-" required>
+                            <input type="number" class="form-control" id="progress_value" name="progress_value" placeholder="Ej: 10 -si anteriormente se ingresó 'Kg', son 10 Kg-">
                         </div>
                         <input type="submit" class="btn btn-primary" value="Guardar">
                         <a class="btn btn-secondary" href={{ route('routines.exercises', ['id'=> $routine->id]) }}> Cancelar </a>

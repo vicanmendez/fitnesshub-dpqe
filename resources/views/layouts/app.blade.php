@@ -121,13 +121,16 @@
     <!-- Graphs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
     <script>
+    var last7Days = @json($last7Days);
+    var amountClients = @json($amountClients);
+
       var ctx = document.getElementById("myChart");
       var myChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+          labels: last7Days,
           datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
+            data: amountClients,
             lineTension: 0,
             backgroundColor: 'transparent',
             borderColor: '#007bff',
